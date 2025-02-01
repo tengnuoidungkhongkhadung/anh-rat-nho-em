@@ -1,0 +1,75 @@
+body {
+  background-color: #fec5e5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  position: relative;
+  overflow: hidden; /* Ngăn không cho chữ chạy ra ngoài màn hình */
+}
+
+@keyframes beat {
+  0% {
+    transform: scale(1) translateY(100px);
+  }
+  50% {
+    transform: scale(1.5) translateY(-400px);
+  }
+  100% {
+    transform: scale(1) translateY(100px);
+  }
+}
+
+.heart {
+  position: relative;
+  width: 125px;
+  height: 90px;
+  animation: beat 8s infinite;
+}
+
+.heart:before,
+.heart:after {
+  position: absolute;
+  content: "";
+  left: 80px;
+  top: 0;
+  width: 80px;
+  height: 125px;
+  background-color: red;
+  border-radius: 100px 100px 0 0;
+  transform: rotate(-45deg);
+  transform-origin: 0 100%;
+}
+
+.heart:after {
+  left: 0;
+  transform: rotate(45deg);
+  transform-origin: 100% 100%;
+}
+
+/* Dòng chữ chạy */
+.marquee {
+  position: absolute;
+  top: 50%; /* Đặt chữ ở giữa màn hình */
+  left: 50%; /* Căn giữa chữ theo chiều ngang */
+  transform: translate(-50%, -50%); /* Căn chính xác chữ vào giữa */
+  white-space: nowrap;
+  animation: marquee 5s linear infinite; /* Thời gian chạy là 20s */
+  font-size: 100px; /* Cỡ chữ là 20px */
+  color: red; /* Màu chữ */
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Bóng đổ cho chữ */
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(-35%); /* Bắt đầu từ ngoài màn hình bên phải */
+  }
+  50% {
+    transform: translateX(-65%); /* Chạy qua bên trái ngoài màn hình */
+  }
+  100% {
+    transform: translateX(-35%); /* Quay lại bên phải */
+  }
+}
